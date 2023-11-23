@@ -16,8 +16,32 @@ const data = [
         'prerequisites': []
     },
     {
+        'discipline': 'Design de Interface',
+        'prerequisites': ['Fundamentos do Design Digital']
+    },
+    {
+        'discipline': 'Design de Interação',
+        'prerequisites': ['Design de Interface']
+    },
+    {
+        'discipline': 'IHC',
+        'prerequisites': ['Design de Interação']
+    },
+    {
         'discipline': 'Inglês I',
         'prerequisites': []
+    },
+    {
+        'discipline': 'Inglês II',
+        'prerequisites': ['Inglês I']
+    },
+    {
+        'discipline': 'Inglês III',
+        'prerequisites': ['Inglês II']
+    },
+    {
+        'discipline': 'Inglês IV',
+        'prerequisites': ['Inglês III']
     },
     {
         'discipline': 'Introdução à Administração',
@@ -40,16 +64,12 @@ const data = [
         'prerequisites': ['Programação Imperativa']
     },
     {
-        'discipline': 'Design de Interface',
-        'prerequisites': []
+        'discipline': 'Desenvolvimento para Web II',
+        'prerequisites': ['Desenvolvimento para Web I']
     },
     {
         'discipline': 'Estatística e Probabilidade',
         'prerequisites': ['Cálculo para Computação']
-    },
-    {
-        'discipline': 'Inglês II',
-        'prerequisites': []
     },
     {
         'discipline': 'Interconexão e Serviços de Redes',
@@ -61,7 +81,19 @@ const data = [
     },
     {
         'discipline': 'Projeto e Desenvolvimento I',
-        'prerequisites': []
+        'prerequisites': ['Programação Imperativa']
+    },
+    {
+        'discipline': 'Projeto e Desenvolvimento II',
+        'prerequisites': ['Projeto e Desenvolvimento I', 'Desenvolvimento para Web I']
+    },
+    {
+        'discipline': 'Projeto e Desenvolvimento III',
+        'prerequisites': ['Projeto e Desenvolvimento II', 'Desenvolvimento para Web II']
+    },
+    {
+        'discipline': 'Projeto e Desenvolvimento IV',
+        'prerequisites': ['Projeto e Desenvolvimento III']
     },
     {
         'discipline': 'Internet das Coisas',
