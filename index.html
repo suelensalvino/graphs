@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disciplinas TSI</title>
+    <script src="graph.js"> </script>
+    <script src="data.js"> </script>
+
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="">
+            <select id="vertex-select">
+                <option value="" disabled selected>Selecione uma disciplina</option>
+            </select>
+            <button onclick="submitForm()">Enviar</button>
+        </div>
+    </nav>
+
+    <h1>Legenda</h1>
+    <div class="">
+        <div class="">
+            <span>Optativa</span>
+        </div>
+        <div class="">
+            <span>Obrigatória</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <h1>Pré-requisito da disciplina selecionada:</h1>
+    <div id="direct-dependents" class="container"></div>
+    <h1>Depende indiretamente da disciplina selecionada</h1>
+    <div id="indirect-dependents" class="container"></div>
+    <h1>A disciplina selecionada é pré-requisito da disciplina de:</h1>
+    <div id="dependencies" class="container"></div>
+
+</body>
+
+</html>
