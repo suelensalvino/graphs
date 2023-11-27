@@ -4,40 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disciplinas TSI</title>
-    <script src="graph.js"> </script>
-    <script src="data.js"> </script>
+    <title>Nexus TSI</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 
 </head>
 
-<body>
-    <nav class="navbar">
-        <div class="">
-            <select id="vertex-select">
+<body class="bg-gray-900">
+    <header class="py-8 text-3xl text-center font-bold text-white">Nexus TSI</header>
+    <div class="flex justify-center items-center">
+        <div class="relative">
+            <select id="vertex-select"
+                class="appearance-none bg-gray-700 border border-gray-600 text-white text-sm rounded-lg py-2 pl-3 pr-8">
                 <option value="" disabled selected>Selecione uma disciplina</option>
             </select>
-            <button onclick="submitForm()">Enviar</button>
+            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <svg class="w-4 h-4 fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path
+                        d="M6.293 8.293a1 1 0 0 1 1.414-1.414L10 9.586l2.293-2.293a1 1 0 0 1 1.414 1.414l-3 3a1 1 0 0 1-1.414 0l-3-3z" />
+                </svg>
+            </div>
         </div>
-    </nav>
-
-    <h1>Legenda</h1>
-    <div class="">
-        <div class="">
-            <span>Optativa</span>
-        </div>
-        <div class="">
-            <span>Obrigatória</span>
-        </div>
+        <button class="flex items-center pl-3 text-white font-bold" onclick="submitForm()">
+            Enviar
+            <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+            </svg>
+        </button>
     </div>
 
-    <script src="script.js"></script>
-    <h1>Pré-requisito da disciplina selecionada:</h1>
-    <div id="direct-dependents" class="container"></div>
-    <h1>Depende indiretamente da disciplina selecionada</h1>
-    <div id="indirect-dependents" class="container"></div>
-    <h1>A disciplina selecionada é pré-requisito da disciplina de:</h1>
-    <div id="dependencies" class="container"></div>
+    <main class="container mx-auto px-4 py-8">
+        <section class="text-white">
+            <h2 class="font-bold text-xl mb-4">Pré-requisito da disciplina selecionada:</h2>
+            <div id="direct-dependents" class="mb-8"></div>
 
+            <h2 class="font-bold text-xl mb-4">Depende indiretamente da disciplina selecionada:</h2>
+            <div id="indirect-dependents" class="mb-8"></div>
+
+            <h2 class="font-bold text-xl mb-4">A disciplina selecionada é pré-requisito da disciplina de:</h2>
+            <div id="dependencies"></div>
+        </section>
+    </main>
+
+    <script src="graph.js"></script>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
