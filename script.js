@@ -21,9 +21,11 @@ function populateSelect() {
         vertexSelect.appendChild(option);
     });
 }
+
 function toggleLogoSize(logo) {
     logo.classList.toggle('logo-enlarged');
 }
+
 function submitForm() {
     const vertex = vertexSelect.value;
     const dependents = findRelatedVertices(graph, vertex);
@@ -32,39 +34,58 @@ function submitForm() {
 
     const indirectDependenciesContainer = document.getElementById('indirect-dependents');
     indirectDependenciesContainer.innerHTML = '';
-    indirectDependencies.forEach((subject) => {
-        const box = document.createElement('div');
-        box.className = 'box';
-        box.style.backgroundColor = getColorForSubject(subject);
-        const text = document.createElement('span');
-        text.textContent = subject;
-        box.appendChild(text);
-        indirectDependenciesContainer.appendChild(box);
-    });
+    if (indirectDependencies.length === 0) {
+        const message = document.createElement('p');
+        message.textContent = 'Nenhum pré-requisito indireto encontrado.';
+        indirectDependenciesContainer.appendChild(message);
+    } else {
+        indirectDependencies.forEach((subject) => {
+            const box = document.createElement('div');
+            box.className = 'box';
+            box.style.backgroundColor = getColorForSubject(subject);
+            const text = document.createElement('span');
+            text.textContent = subject;
+            box.appendChild(text);
+            indirectDependenciesContainer.appendChild(box);
+        });
+    }
 
     const directDependenciesContainer = document.getElementById('direct-dependents');
     directDependenciesContainer.innerHTML = '';
-    directDependencies.forEach((subject) => {
-        const box = document.createElement('div');
-        box.className = 'box';
-        box.style.backgroundColor = getColorForSubject(subject);
-        const text = document.createElement('span');
-        text.textContent = subject;
-        box.appendChild(text);
-        directDependenciesContainer.appendChild(box);
-    });
+    if (directDependencies.length === 0) {
+        const message = document.createElement('p');
+        message.textContent = 'Nenhum pré-requisito direto encontrado.';
+        directDependenciesContainer.appendChild(message);
+    } else {
+        directDependencies.forEach((subject) => {
+            const box = document.createElement('div');
+            box.className = 'box';
+            box.style.backgroundColor = getColorForSubject(subject);
+            const text = document.createElement('span');
+            text.textContent = subject;
+            box.appendChild(text);
+            directDependenciesContainer.appendChild(box);
+        });
+    }
 
     const dependenciesContainer = document.getElementById('dependencies');
     dependenciesContainer.innerHTML = '';
     const dependencies = findDependenciesInGraph(graph, vertex);
-    dependencies.forEach((dependency) => {
-        const box = document.createElement('div');
-        box.className = 'box';
-        box.style.backgroundColor = getColorForSubject(dependency);
-        const text = document.createElement('span');
-        text.textContent = dependency;
-        box.appendChild(text);
-        dependenciesContainer.appendChild(box);
-    });
+    if (dependencies.length === 0) {
+        const message = document.createElement('p');
+        message.textContent = 'Nenhuma disciplina dependente encontrada.';
+        dependenciesContainer.appendChild(message);
+    } else {
+        dependencies.forEach((dependency) => {
+            const box = document.createElement('div');
+            box.className = 'box';
+            box.style.backgroundColor = getColorForSubject(dependency);
+            const text = document.createElement('span');
+            text.textContent = dependency;
+            box.appendChild(text);
+            dependenciesContainer.appendChild(box);
+        });
+    }
 }
+
 populateSelect();
