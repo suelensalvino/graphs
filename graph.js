@@ -1,5 +1,6 @@
 class Graph {
-    
+    // Classe para representar um grafo direcionado
+
     constructor(edges, directed = false) {
         this.directed = directed;
         this.neighbors = {};
@@ -7,6 +8,7 @@ class Graph {
     }
 
     addEdges(edges) {
+        // Adiciona arestas ao grafo
         for (const [x, y] of edges) {
             if (!this.neighbors[x]) {
                 this.neighbors[x] = [];
@@ -26,6 +28,7 @@ class Graph {
     }
 
     getEdges() {
+        // Obtém todas as arestas do grafo
         const edges = [];
         for (const key in this.neighbors) {
             for (const value of this.neighbors[key]) {
@@ -36,16 +39,19 @@ class Graph {
     }
 
     getVertices() {
+        // Obtém todos os vértices do grafo
         return Object.keys(this.neighbors);
     }
 
     edgeExists(edge) {
+        // Verifica se uma aresta existe no grafo
         const [x, y] = edge;
         return x in this.neighbors && this.neighbors[x].includes(y);
     }
 }
 
 function findRelatedVertices(graph, vertex) {
+    // Encontra dependências diretas e indiretas de um vértice
     const visited = {};
     for (const key of graph.getVertices()) {
         visited[key] = false;
@@ -62,7 +68,7 @@ function findRelatedVertices(graph, vertex) {
             if (!visited[neighbor]) {
                 if (vertex === initialVertex && neighbor !== "") {
                     directDependents.push(neighbor);
-                } else if (neighbor != "") {
+                } else if (neighbor !== "") {
                     indirectDependents.push(neighbor);
                 }
                 relations.push([vertex, neighbor]);
@@ -77,6 +83,7 @@ function findRelatedVertices(graph, vertex) {
 }
 
 function findDependenciesInGraph(graph, vertex) {
+    // Encontra as dependências de um vértice no grafo
     const visited = {};
     for (const key of graph.getVertices()) {
         visited[key] = false;
